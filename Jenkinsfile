@@ -3,7 +3,8 @@ node{
     git 'https://github.com/prion4362/Jenkins'
   }
   stage('Compile Package'){
-    echo 'test'
+    sh 'mvn package'
+    // echo 'test'
   }
   
 }
