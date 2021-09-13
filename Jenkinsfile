@@ -1,5 +1,10 @@
 node{
-  stage('SCM Checkout'){ 
+  stage('Select Server') {
+    echo "Please select the server you want to Migrate: ${params.Servers}" // interperlation
+    properties([[$class: 'DatadogJobProperty', emitSCMEvents: false], parameters([choice(choices: 'soafrdp13.verizon.com'\n'soafrdp14.verizon.com'\n'soafrdp15.verizon.com', description: 'Servers for release', name: 'Servers')])])
+  }
+  stage('SCM Checkout'){
+    
     git 'https://github.com/prion4362/Jenkins'
   }
   stage('Compile Package'){
